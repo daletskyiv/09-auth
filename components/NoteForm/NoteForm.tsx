@@ -2,10 +2,10 @@
 
 import css from './NoteForm.module.css';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { createNote } from '../../lib/api';
 import toast from 'react-hot-toast';
 import { useUserStore } from '@/lib/store/noteStore';
 import { useRouter } from 'next/navigation';
+import { createNote } from '@/lib/clientApi';
 
 export default function NoteForm() {
   const { draft, setDraft, clearDraft } = useUserStore();

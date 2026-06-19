@@ -4,8 +4,8 @@ import {
   QueryClient,
 } from '@tanstack/react-query';
 import NoteDetails from './NoteDetails.client';
-import { fetchNoteById } from '@/lib/api';
 import { Metadata } from 'next';
+import { fetchNoteById } from '@/lib/clientApi';
 
 export async function generateMetadata({
   params,
