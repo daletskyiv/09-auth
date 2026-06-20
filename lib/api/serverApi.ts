@@ -4,7 +4,7 @@ import { User } from '@/types/user';
 import { Note } from '@/types/note';
 import { FetchNotesParams, FetchNotesResponse } from './clientApi';
 
-export const checkSession = async () => {
+export async function checkSession() {
   const cookieStore = await cookies();
   const res = await nextServer.get('/auth/session', {
     headers: {
@@ -12,9 +12,9 @@ export const checkSession = async () => {
     },
   });
   return res;
-};
+}
 
-export const getMe = async (): Promise<User> => {
+export async function getMe(): Promise<User> {
   const cookieStore = await cookies();
   const { data } = await nextServer.get('/auth/me', {
     headers: {
@@ -22,7 +22,7 @@ export const getMe = async (): Promise<User> => {
     },
   });
   return data;
-};
+}
 
 export async function fetchNoteById(id: string): Promise<Note> {
   const { data } = await nextServer.get<Note>(`/notes/${id}`, {
