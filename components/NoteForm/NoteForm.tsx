@@ -5,7 +5,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 import { useUserStore } from '@/lib/store/noteStore';
 import { useRouter } from 'next/navigation';
-import { createNote } from '@/lib/clientApi';
+import { createNote } from '@/lib/api/clientApi';
 
 export default function NoteForm() {
   const { draft, setDraft, clearDraft } = useUserStore();

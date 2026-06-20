@@ -1,5 +1,5 @@
 import { User } from '@/types/user';
-import type { Note, UserDraft } from '../types/note';
+import type { Note, UserDraft } from '../../types/note';
 import { nextServer } from './api';
 
 export interface FetchNotesResponse {

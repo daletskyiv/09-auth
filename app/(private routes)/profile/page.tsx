@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import css from './ProfilePage.module.css';
 import Link from 'next/link';
-import { getMe } from '@/lib/serverApi';
+import { getMe } from '@/lib/api/serverApi';
 
 export default async function Profile() {
   const user = await getMe();

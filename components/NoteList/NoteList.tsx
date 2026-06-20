@@ -5,7 +5,7 @@ import type { Note } from '../../types/note';
 import css from './NoteList.module.css';
 import toast from 'react-hot-toast';
 import Link from 'next/link';
-import { deleteNote } from '@/lib/clientApi';
+import { deleteNote } from '@/lib/api/clientApi';
 
 interface NoteListProps {
   noteList: Note[];
