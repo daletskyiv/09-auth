@@ -1,9 +1,6 @@
 import axios from 'axios';
 
 export const nextServer = axios.create({
-  baseURL: 'http://localhost:3000/api',
+  baseURL: process.env.NEXT_PUBLIC_API_URL + '/api',
   withCredentials: true,
 });
-
-const myKey = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN;
-axios.defaults.headers.common['Authorization'] = `Bearer ${myKey}`;

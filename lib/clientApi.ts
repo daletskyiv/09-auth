@@ -18,6 +18,10 @@ export interface RegisterRequest {
   password: string;
 }
 
+type CheckSessionRequest = {
+  success: boolean;
+};
+
 export async function fetchNotes(
   params: FetchNotesParams,
 ): Promise<FetchNotesResponse> {
@@ -51,4 +55,23 @@ export async function fetchNoteById(id: string): Promise<Note> {
 export const register = async (data: RegisterRequest) => {
   const res = await nextServer.post<User>('/auth/register', data);
   return res.data;
+};
+
+export const login = async (data: RegisterRequest) => {
+  const res = await nextServer.post<User>('/auth/login', data);
+  return res.data;
+};
+
+export const logout = async (): Promise<void> => {
+  await nextServer.post('/auth/logout');
+};
+
+export const checkSession = async () => {
+  const data = await nextServer.get<CheckSessionRequest>('/auth/session');
+  return data;
+};
+
+export const getMe = async () => {
+  const { data } = await nextServer.get<User>('/auth/me');
+  return data;
 };
