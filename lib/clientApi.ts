@@ -7,7 +7,7 @@ export interface FetchNotesResponse {
   totalPages: number;
 }
 
-interface FetchNotesParams {
+export interface FetchNotesParams {
   query?: string;
   page?: number;
   tag?: string;
@@ -52,26 +52,26 @@ export async function fetchNoteById(id: string): Promise<Note> {
   return data;
 }
 
-export const register = async (data: RegisterRequest) => {
+export async function register(data: RegisterRequest) {
   const res = await nextServer.post<User>('/auth/register', data);
   return res.data;
-};
+}
 
-export const login = async (data: RegisterRequest) => {
+export async function login(data: RegisterRequest) {
   const res = await nextServer.post<User>('/auth/login', data);
   return res.data;
-};
+}
 
-export const logout = async (): Promise<void> => {
+export async function logout(): Promise<void> {
   await nextServer.post('/auth/logout');
-};
+}
 
-export const checkSession = async () => {
-  const data = await nextServer.get<CheckSessionRequest>('/auth/session');
+export async function checkSession() {
+  const { data } = await nextServer.get<CheckSessionRequest>('/auth/session');
   return data;
-};
+}
 
-export const getMe = async () => {
+export async function getMe() {
   const { data } = await nextServer.get<User>('/auth/me');
   return data;
-};
+}

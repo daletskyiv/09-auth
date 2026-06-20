@@ -12,13 +12,17 @@ export default function SignUp() {
   const [error, setError] = useState('');
   const setUser = useAuthStore((state) => state.setUser);
 
-  const handleSubmit = async (formData: FormData) => {
-    try {
-      const formValues = {
-        email: formData.get('email') as string,
-        password: formData.get('password') as string,
-      };
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
+    const formData = new FormData(e.currentTarget);
+
+    const formValues = {
+      email: formData.get('email') as string,
+      password: formData.get('password') as string,
+    };
+
+    try {
       const res = await register(formValues);
 
       if (res) {
@@ -39,7 +43,7 @@ export default function SignUp() {
   return (
     <main className={css.mainContent}>
       <h1 className={css.formTitle}>Sign up</h1>
-      <form className={css.form} action={handleSubmit}>
+      <form className={css.form} onSubmit={handleSubmit}>
         <div className={css.formGroup}>
           <label htmlFor="email">Email</label>
           <input
