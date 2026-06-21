@@ -6,13 +6,16 @@ import { useRouter } from 'next/navigation';
 import css from './EditProfilePage.module.css';
 import { getMe } from '@/lib/api/clientApi';
 import { updateMe } from '@/lib/api/clientApi';
+import { useAuthStore } from '@/lib/store/authStore';
 
 export default function EditProfile() {
   const router = useRouter();
 
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
-  const [avatarUrl, setAvatarUrl] = useState('');
+  const [avatar, setAvatarUrl] = useState('');
+
+  const setUser = useAuthStore((state) => state.setUser);
 
   useEffect(() => {
     async function fetchUser() {
@@ -28,7 +31,9 @@ export default function EditProfile() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    await updateMe({ username });
+    const updatedUser = await updateMe({ username });
+
+    setUser(updatedUser);
 
     router.refresh();
 
@@ -45,7 +50,7 @@ export default function EditProfile() {
         <h1 className={css.formTitle}>Edit Profile</h1>
 
         <Image
-          src={avatarUrl || '/default-avatar.png'}
+          src={avatar || '/default-avatar.png'}
           alt="User Avatar"
           width={120}
           height={120}
