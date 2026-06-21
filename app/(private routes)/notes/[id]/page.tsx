@@ -5,7 +5,7 @@ import {
 } from '@tanstack/react-query';
 import NoteDetails from './NoteDetails.client';
 import { Metadata } from 'next';
-import { fetchNoteById } from '@/lib/api/clientApi';
+import { fetchNoteById } from '@/lib/api/serverApi';
 
 export async function generateMetadata({
   params,
@@ -20,7 +20,7 @@ export async function generateMetadata({
     openGraph: {
       title: title,
       description: description,
-      url: `https://08-zustand-gbvzj4fjc-daletskyiv-1433s-projects.vercel.app/notes/${id}`,
+      url: `https://09-auth-ten-rouge.vercel.app/notes/${id}`,
       siteName: 'NoteHub',
       images: [
         {

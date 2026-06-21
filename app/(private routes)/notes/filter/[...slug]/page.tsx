@@ -4,7 +4,7 @@ import {
   HydrationBoundary,
 } from '@tanstack/react-query';
 import NotesClient from './Notes.client';
-import { fetchNotes } from '@/lib/api/clientApi';
+import { fetchNotes } from '@/lib/api/serverApi';
 import { Metadata } from 'next';
 
 export async function generateMetadata({
@@ -25,8 +25,8 @@ export async function generateMetadata({
       title: title,
       description: description,
       url: category
-        ? `https://08-zustand-gbvzj4fjc-daletskyiv-1433s-projects.vercel.app/notes/filter/${category}`
-        : `https://08-zustand-gbvzj4fjc-daletskyiv-1433s-projects.vercel.app/notes/filter/all`,
+        ? `https://09-auth-ten-rouge.vercel.app/notes/filter/${category}`
+        : `https://09-auth-ten-rouge.vercel.app/notes/filter/all`,
       siteName: 'NoteHub',
       images: [
         {
